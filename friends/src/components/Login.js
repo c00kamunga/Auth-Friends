@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
-import { axiosWithAuth } from '../path/to/module';
+import { axiosWithAuth } from '../axiosWithAuth';
 
 const Login = (props) => {
  const [credentials, setCredentials] = useState({});
 
   const login = e => {
     e.preventDefault();
-    axiosWithAuth().post('login/endpoint', credentials)
+    axiosWithAuth().post("http://localhost:5000/api/login", credentials)
       .then(res => {
         localStorage.setItem('token', res.data.token);
-        this.props.history.push('/');
+        props.history.push('/protected');
       })
   }
 
@@ -22,18 +22,18 @@ const Login = (props) => {
 
     return (
       <div>
-        <form onSubmit={this.login}>
+        <form onSubmit={login}>
           <input
             type="text"
             name="username"
             value={credentials.username}
-            onChange={this.handleChange}
+            onChange={handleChange}
           />
           <input
             type="password"
             name="password"
             value={credentials.password}
-            onChange={this.handleChange}
+            onChange={handleChange}
           />
           <button>Log in</button>
         </form>
