@@ -9,8 +9,8 @@ const Friends = (props) => {
       axiosWithAuth()
         .get("/friends")
         .then((res) => {
-          console.log(res.data);
-          setFriend(res.data);
+          console.log(res);
+          setFriend(res);
         })
         .catch((err) => {
           console.log(err);
