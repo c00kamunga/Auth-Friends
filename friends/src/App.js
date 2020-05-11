@@ -3,6 +3,7 @@ import Public from './components/Public'
 import Login from './components/Login'
 import PrivateRoute from './components/PrivateRoute'
 import Protected from './components/Protected'
+import Friends from './components/Friends'
 import { Route, Link } from 'react-router-dom'
 
 
@@ -16,9 +17,13 @@ function App() {
         <li>
           <Link to ="/protected">Protected Page</Link>
         </li>
+        <li>
+          <Link to="/friends">Friends List</Link>
+        </li>
           <Route path="/login" component={Login}/>
           <Route path="/public" component={Public}/>
           <PrivateRoute path="/protected" component={Protected}/>
+          <PrivateRoute path="/friends" component={Friends} />
       </ul>
     </div>
   );
