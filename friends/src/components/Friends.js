@@ -5,7 +5,6 @@ const Friends = (props) => {
   const [friend, setFriend] = useState([]);
 
   useEffect(() => {
-    const friends = (e) => {
       axiosWithAuth()
         .get("/friends")
         .then((res) => {
@@ -15,8 +14,7 @@ const Friends = (props) => {
         .catch((err) => {
           console.log(err);
         });
-        friends();
-    };
+    
 }, []);
 
   return (
