@@ -6,7 +6,6 @@ const Friends = (props) => {
 
   useEffect(() => {
     const friends = (e) => {
-      e.preventDefault();
       axiosWithAuth()
         .get("/friends")
         .then((res) => {
@@ -16,8 +15,9 @@ const Friends = (props) => {
         .catch((err) => {
           console.log(err);
         });
+        friends();
     };
-  }, []);
+}, []);
 
   return (
     <div>
