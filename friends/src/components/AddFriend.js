@@ -12,13 +12,12 @@ margin: 0 auto;
 
 
 const AddFriend = (props) => {
-    const [addFriend, setAddFriend] = useState([]);
+    const [addFriend, setAddFriend] = useState({});
    
      const addOneFriend = e => {
        e.preventDefault();
-       id:Date.now()
        axiosWithAuth()
-       .post("/friends", addOneFriend)
+       .post("/friends", addFriend)
          .then(res => {
             console.log(res)
             props.setFriend(res.data)

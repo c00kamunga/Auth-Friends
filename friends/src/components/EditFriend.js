@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { axiosWithAuth } from "../axiosWithAuth";
 
-
-
 const Friends = (props) => {
   const [edit, setEdit] = useState([]);
 
@@ -18,23 +16,23 @@ const Friends = (props) => {
       });
   }, []);
 
-  return (
-    <div>
-      <AddFriend/>
-      {friend.map((homies) => {
-        const { id } = homies;
-        return (
-          <Link key={id} to={`/friends/${id}`}>
-            <StyledFriends>
-              <h1>Name: {homies.name}</h1>
-              <h3>age: {homies.age}</h3>
-              <h3>email: {homies.email}</h3>
-            </StyledFriends>
-          </Link>
-        );
-      })}
-    </div>
-  );
+  return <div>
+<form>
+    <input
+    type="text"
+    name="age"
+    />
+    <input
+    type="email"
+    name="email"
+    />
+    <input
+    type="text"
+    name="name"
+    />
+</form>
+
+  </div>;
 };
 
 export default Friends;
