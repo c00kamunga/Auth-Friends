@@ -21,12 +21,13 @@ const AddFriend = (props) => {
        .post("/friends", addOneFriend)
          .then(res => {
             console.log(res)
+            props.setFriend(res.data)
          })
      }
    
      const handleChange = e => {
          setAddFriend({
-           ...addOneFriend,
+           ...addFriend,
            [e.target.name]: e.target.value,
      })
      }

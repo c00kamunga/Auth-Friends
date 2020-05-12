@@ -29,7 +29,7 @@ const Friends = (props) => {
 
   return (
     <div>
-      <AddFriend/>
+      <AddFriend setFriend={setFriend}/>
       {friend.map((homies) => {
         const { id } = homies;
         return (
