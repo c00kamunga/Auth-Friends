@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { axiosWithAuth } from "../axiosWithAuth";
 import { Link } from "react-router-dom";
-import AddFriend from './AddFriend'
+import AddFriend from "./AddFriend";
 import styled from "styled-components";
+
 
 const StyledFriends = styled.div`
   border: 3px solid black;
@@ -29,7 +30,7 @@ const Friends = (props) => {
 
   return (
     <div>
-      <AddFriend setFriend={setFriend}/>
+      <AddFriend setFriend={setFriend} />
       {friend.map((homies) => {
         const { id } = homies;
         return (

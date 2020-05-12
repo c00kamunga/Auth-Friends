@@ -1,38 +1,52 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { axiosWithAuth } from "../axiosWithAuth";
 
-const Friends = (props) => {
-  const [edit, setEdit] = useState([]);
+const EditFriend = (props) => {
+  const [edit, setEdit] = useState({ age: "", email: "", name: "" });
 
-  useEffect(() => {
+  const changeHandler = (e) => {
+    setEdit({ ...edit, [e.target.name]: e.target.value });
+  };
+
+  const submitHandler = (e) => {
     axiosWithAuth()
-      .put("/friends/:id")
+      .put(`/friends/${props.oneFriend.id}`, edit)
       .then((res) => {
         console.log(res.data);
-        setEdit(res.data);
       })
       .catch((err) => {
         console.log(err);
       });
-  }, []);
+  };
 
-  return <div>
-<form>
-    <input
-    type="text"
-    name="age"
-    />
-    <input
-    type="email"
-    name="email"
-    />
-    <input
-    type="text"
-    name="name"
-    />
-</form>
-
-  </div>;
+  return (
+    <div>
+      <form onSubmit={submitHandler}>
+        <input
+          type="text"
+          name="age"
+          value={edit.age}
+          onChange={changeHandler}
+          placeholder="Edit Age"
+        />
+        <input
+          type="email"
+          name="email"
+          value={edit.email}
+          onChange={changeHandler}
+          placeholder="Edit Email"
+        />
+        <input
+          type="text"
+          name="name"
+          value={edit.name}
+          onChange={changeHandler}
+          placeholder="Edit Name"
+        />
+        <button>Edit</button>
+      </form>
+    </div>
+  );
 };
 
-export default Friends;
+export default EditFriend;

@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { axiosWithAuth } from "../axiosWithAuth";
 import styled from "styled-components";
+import EditFriend from './EditFriend'
 
 const StyledFriends = styled.div`
   border: 3px solid black;
+  padding: 1rem;
 `;
 
 
@@ -36,6 +38,7 @@ const Friend = (props) => {
         <h1>Name: {oneFriend.name}</h1>
         <h3>age: {oneFriend.age}</h3>
         <h3>email: {oneFriend.email}</h3>
+      <EditFriend oneFriend={oneFriend}/>
       </StyledFriends>
     </div>
   );
