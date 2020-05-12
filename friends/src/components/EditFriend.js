@@ -1,26 +1,17 @@
 import React, { useState, useEffect } from "react";
 import { axiosWithAuth } from "../axiosWithAuth";
-import { Link } from "react-router-dom";
-import AddFriend from './AddFriend'
-import styled from "styled-components";
 
-const StyledFriends = styled.div`
-  border: 3px solid black;
-  width: 40%;
-  margin: 0 auto;
-  margin-top: 1rem;
-  padding-left: 2rem;
-`;
+
 
 const Friends = (props) => {
-  const [friend, setFriend] = useState([]);
+  const [edit, setEdit] = useState([]);
 
   useEffect(() => {
     axiosWithAuth()
-      .get("/friends")
+      .put("/friends/:id")
       .then((res) => {
         console.log(res.data);
-        setFriend(res.data);
+        setEdit(res.data);
       })
       .catch((err) => {
         console.log(err);

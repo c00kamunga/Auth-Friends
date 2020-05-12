@@ -5,6 +5,7 @@ import PrivateRoute from './components/PrivateRoute'
 import Protected from './components/Protected'
 import Friends from './components/Friends'
 import Friend from './components/Friend'
+import AddFriend from './components/AddFriend'
 import { Route, Link } from 'react-router-dom'
 
 

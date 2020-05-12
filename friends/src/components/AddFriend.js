@@ -1,5 +1,15 @@
-import React, { useState, useEffect } from 'react';
-import axiosWithAuth from '../axiosWithAuth';
+import React, { useState } from 'react';
+import { axiosWithAuth } from '../axiosWithAuth';
+import styled from 'styled-components';
+
+
+const StyledAdder = styled.div`
+text-align: center;
+border: 3px solid green;
+width: 28.2%;
+margin: 0 auto;
+`
+
 
 const AddFriend = (props) => {
     const [addFriend, setAddFriend] = useState([]);
@@ -8,45 +18,47 @@ const AddFriend = (props) => {
        e.preventDefault();
        id:Date.now()
        axiosWithAuth()
-       .post("/friends", state.addOneFriend)
+       .post("/friends", addOneFriend)
          .then(res => {
-           localStorage.setItem('token', res.data.payload);
-           props.history.push('/protected');
+            console.log(res)
          })
      }
    
      const handleChange = e => {
          setAddFriend({
-           ...state.addOneFriend,
+           ...addOneFriend,
            [e.target.name]: e.target.value,
      })
      }
    
        return (
-         <div>
+         <StyledAdder>
            <form onSubmit={addOneFriend}>
              <input
                type="text"
                name="age"
                value={addFriend.age}
                onChange={handleChange}
+               placeholder="age"
              />
              <input
                type="email"
                name="email"
                value={addFriend.email}
                onChange={handleChange}
+               placeholder="email"
              />
              <input
                type="text"
                name="name"
                value={addFriend.name}
                onChange={handleChange}
+               placeholder="name"
              />
              <button>Add Friend</button>
            </form>
-         </div>
+         </StyledAdder>
        )
    }
    
-   export default Login;
+   export default AddFriend;
